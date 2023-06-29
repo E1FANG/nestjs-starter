@@ -26,9 +26,14 @@ export class CatsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: string, @Param('name') name: string) {
     console.log(id);
-    return this.catsService.findOne(+id);
+    const res = id + name;
+    return this.catsService.findOne(+res);
+  }
+  @Get('/users/:username/posts/:postId')
+  getSth(@Param('username') username: string, @Param('postId') postId: string) {
+    return username + postId;
   }
 
   @Patch(':id')
